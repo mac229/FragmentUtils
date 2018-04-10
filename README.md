@@ -64,10 +64,27 @@ class MainActivity : AppCompatActivity(), ReplaceFragmentListener {
 
 #### Step 2. Get listener in your Fragment
 ```kotlin
+    private var replaceFragmentListener: ReplaceFragmentListener? = null
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        replaceFragmentListener = getListener(ReplaceFragmentListener::class.java)
+    }
+```
+
+## Features - You can use additional features in both - java and kotlin versions
+
+1. Get listener or throw exception when parent doesn't implement listener:
+```kotlin
     private lateinit var replaceFragmentListener: ReplaceFragmentListener
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
-        replaceFragmentListener = activity as ReplaceFragmentListener
+        replaceFragmentListener = getListenerOrThrowException(ReplaceFragmentListener::class.java)
     }
+```
+
+2. You also can use generic `findFragmentByTag`:
+```kotlin
+    val fragment = supportFragmentManager.findFragmentByTag(MainFragment::class.java, TAG)
 ```
