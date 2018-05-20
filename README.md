@@ -1,4 +1,5 @@
 # FragmentUtils
+[![](https://jitpack.io/v/mac229/FragmentUtils.svg)](https://jitpack.io/#mac229/FragmentUtils)
 Provides communication with parent Fragment or Activity.
 
 ## Getting started
@@ -19,13 +20,13 @@ And in your app level `build.gradle`:
 For **java** version
 ```groovy
 dependencies {
-    implementation 'com.github.mac229.FragmentUtils:fragmentutils:1.0.1'
+    implementation 'com.github.mac229.FragmentUtils:fragmentutils:1.0.2'
 }
 ```
 For **kotlin** version
 ```groovy
 dependencies {
-    implementation 'com.github.mac229.FragmentUtils:fragmentutils-kt:1.0.1'
+    implementation 'com.github.mac229.FragmentUtils:fragmentutils-kt:1.0.2'
 }
 ```
 
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements ReplaceFragmentLi
 
 ```groovy
 dependencies {
-    implementation 'com.github.mac229.FragmentUtils:fragmentutils-kt:1.0.1'
+    implementation 'com.github.mac229.FragmentUtils:fragmentutils-kt:1.0.2'
 }
 ```
 
