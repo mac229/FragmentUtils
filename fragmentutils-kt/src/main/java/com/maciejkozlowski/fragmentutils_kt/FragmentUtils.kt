@@ -51,12 +51,11 @@ fun <T> Fragment.getListenerFromActivity(listenerClazz: Class<T>): T? {
     return getListener(listenerClazz, activity)
 }
 
-fun <T> FragmentManager.findFragmentByTag(fragmentClass: Class<T>, tag: String): T? {
+inline fun <reified T> FragmentManager.findFragmentByTag(tag: String): T? {
     val fragment = findFragmentByTag(tag)
-    return if (fragmentClass.isInstance(fragment)) {
-        fragmentClass.cast(fragment)
+    return if (fragment is T) {
+        fragment
     } else {
         null
     }
-
 }
