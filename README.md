@@ -1,5 +1,6 @@
 # FragmentUtils
 [![](https://jitpack.io/v/mac229/FragmentUtils.svg)](https://jitpack.io/#mac229/FragmentUtils)
+
 Provides communication with parent Fragment or Activity.
 
 ## Getting started
