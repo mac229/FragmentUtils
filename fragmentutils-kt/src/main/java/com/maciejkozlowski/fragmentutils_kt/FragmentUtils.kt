@@ -1,5 +1,6 @@
 package com.maciejkozlowski.fragmentutils_kt
 
+import android.support.annotation.IdRes
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 
@@ -58,4 +59,12 @@ inline fun <reified T> FragmentManager.findFragmentByTag(tag: String): T? {
     } else {
         null
     }
+}
+
+fun FragmentManager.add(fragment: Fragment, tag: String? = null) {
+    beginTransaction().add(fragment, tag).commit()
+}
+
+fun FragmentManager.replace(@IdRes containerId: Int, fragment: Fragment, tag: String? = null) {
+    beginTransaction().replace(containerId, fragment, tag).commit()
 }
