@@ -11,12 +11,12 @@ class MainActivity : AppCompatActivity(), ReplaceFragmentListener {
         if (savedInstanceState == null) {
             supportFragmentManager
                     .beginTransaction()
-                    .add(android.R.id.content, ExampleFragment.newInstance(this::showMainFragment))
+                    .add(android.R.id.content, ExampleFragment.newInstance())
                     .commit()
         }
     }
 
     override fun showMainFragment() {
-        Toast.makeText(Context@ this, "text", Toast.LENGTH_SHORT).show()
+        Toast.makeText(Context@ this, "Show main fragment", Toast.LENGTH_SHORT).show()
     }
 }

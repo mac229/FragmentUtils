@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.maciejkozlowski.fragmentutils_kt.getListener
+import com.maciejkozlowski.fragmentutils_kt.getListenerOrThrowException
 import kotlinx.android.synthetic.main.fragment_main.*
 
 /**
@@ -14,22 +14,16 @@ import kotlinx.android.synthetic.main.fragment_main.*
  */
 class ExampleFragment : Fragment() {
 
-    private lateinit var action: () -> Unit
-
     companion object {
 
-        fun newInstance(action: () -> Unit): ExampleFragment {
-            val exampleFragment = ExampleFragment()
-            exampleFragment.action = action
-            return exampleFragment
-        }
+        fun newInstance() = ExampleFragment()
     }
 
-    private var replaceFragmentListener: ReplaceFragmentListener? = null
+    private lateinit var replaceFragmentListener: ReplaceFragmentListener
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
-        replaceFragmentListener = getListener(ReplaceFragmentListener::class.java)
+        replaceFragmentListener = getListenerOrThrowException(ReplaceFragmentListener::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -38,10 +32,10 @@ class ExampleFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        button.setOnClickListener { action() }
+        button.setOnClickListener { onButtonClicked() }
     }
 
     private fun onButtonClicked() {
-
+        replaceFragmentListener.showMainFragment()
     }
 }
