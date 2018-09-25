@@ -3,6 +3,9 @@
 
 Provides communication with parent Fragment or Activity.
 
+## Android X
+Since version 1.1.0 library's been using from Android X.
+
 ## Getting started
 
 In your project level `build.gradle`:
@@ -21,13 +24,13 @@ And in your app level `build.gradle`:
 For **java** version
 ```groovy
 dependencies {
-    implementation 'com.github.mac229.FragmentUtils:fragmentutils:1.0.2'
+    implementation 'com.github.mac229.FragmentUtils:fragmentutils:1.1.0'
 }
 ```
 For **kotlin** version
 ```groovy
 dependencies {
-    implementation 'com.github.mac229.FragmentUtils:fragmentutils-kt:1.0.2'
+    implementation 'com.github.mac229.FragmentUtils:fragmentutils-kt:1.1.0'
 }
 ```
 
