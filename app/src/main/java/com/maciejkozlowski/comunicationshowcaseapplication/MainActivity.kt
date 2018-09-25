@@ -1,19 +1,22 @@
 package com.maciejkozlowski.comunicationshowcaseapplication
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ReplaceFragmentListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportFragmentManager
-                .beginTransaction()
-                .add(android.R.id.content, MainFragment.newInstance())
-                .commit()
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                    .beginTransaction()
+                    .add(android.R.id.content, ExampleFragment.newInstance(this::showMainFragment))
+                    .commit()
+        }
     }
 
-    fun showDifferentFragent() {
-        // TODO
+    override fun showMainFragment() {
+        Toast.makeText(Context@ this, "text", Toast.LENGTH_SHORT).show()
     }
 }

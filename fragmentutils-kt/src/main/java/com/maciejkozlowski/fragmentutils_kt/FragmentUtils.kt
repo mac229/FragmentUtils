@@ -1,8 +1,9 @@
 package com.maciejkozlowski.fragmentutils_kt
 
-import android.support.annotation.IdRes
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentManager
+import androidx.annotation.IdRes
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+
 
 /**
  * Created by Maciej Kozłowski on 08.04.2018.
