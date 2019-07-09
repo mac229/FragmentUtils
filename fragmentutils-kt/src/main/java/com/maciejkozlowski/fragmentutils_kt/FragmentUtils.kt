@@ -9,48 +9,43 @@ import androidx.fragment.app.FragmentManager
  * Created by Maciej Kozłowski on 08.04.2018.
  */
 
-fun <T> Fragment.getListenerOrThrowException(listenerClazz: Class<T>): T {
-    return getListener(listenerClazz)
-            ?: throw IllegalStateException("Not found " + listenerClazz.simpleName)
+inline fun <reified T> Fragment.getListenerOrThrowException(): T {
+    return getListener<T>()
+            ?: throw IllegalStateException("Calling class must implement:  " + T::class.java.simpleName)
 }
 
-fun <T> Fragment.getListener(listenerClazz: Class<T>): T? {
-    var listener = getListenerFromTargetFragment(listenerClazz)
+inline fun <reified T> Fragment.getListener(): T? {
+    var listener = getListenerFromTargetFragment<T>()
     if (listener != null) {
         return listener
     }
 
-    listener = getListenerFromParentFragment(listenerClazz)
+    listener = getListenerFromParentFragment<T>()
     if (listener != null) {
         return listener
     }
 
-    listener = getListenerFromActivity(listenerClazz)
-    return if (listener != null) {
-        listener
+    return getListenerFromActivity()
+}
+
+inline fun <reified T> getListener(target: Any?): T? {
+    return if (T::class.java.isInstance(target)) {
+        T::class.java.cast(target)
     } else {
         null
     }
 }
 
-private fun <T> getListener(listenerClass: Class<T>, target: Any?): T? {
-    return if (listenerClass.isInstance(target)) {
-        listenerClass.cast(target)
-    } else {
-        null
-    }
+inline fun <reified T> Fragment.getListenerFromTargetFragment(): T? {
+    return getListener(targetFragment)
 }
 
-fun <T> Fragment.getListenerFromTargetFragment(listenerClazz: Class<T>): T? {
-    return getListener(listenerClazz, targetFragment)
+inline fun <reified T> Fragment.getListenerFromParentFragment(): T? {
+    return getListener<T>(parentFragment)
 }
 
-fun <T> Fragment.getListenerFromParentFragment(listenerClazz: Class<T>): T? {
-    return getListener(listenerClazz, parentFragment)
-}
-
-fun <T> Fragment.getListenerFromActivity(listenerClazz: Class<T>): T? {
-    return getListener(listenerClazz, activity)
+inline fun <reified T> Fragment.getListenerFromActivity(): T? {
+    return getListener<T>(activity)
 }
 
 inline fun <reified T> FragmentManager.findFragmentByTag(tag: String): T? {

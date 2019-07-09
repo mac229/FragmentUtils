@@ -5,6 +5,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
+    buildToolsVersion '28.0.3'
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.maciejkozlowski.comunicationshowcaseapplication"
@@ -23,9 +24,8 @@ android {
 }
 
 dependencies {
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "androidx.appcompat:appcompat:1.0.0"
-
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'com.github.mac229.FragmentUtils:fragmentutils-kt:1.1.0'
     implementation 'com.github.mac229.FragmentUtils:fragmentutils:1.1.0'
 }
