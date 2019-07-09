@@ -24,13 +24,13 @@ And in your app level `build.gradle`:
 For **java** version
 ```groovy
 dependencies {
-    implementation 'com.github.mac229.FragmentUtils:fragmentutils:1.1.0'
+    implementation 'com.github.mac229.FragmentUtils:fragmentutils:1.2.1'
 }
 ```
 For **kotlin** version
 ```groovy
 dependencies {
-    implementation 'com.github.mac229.FragmentUtils:fragmentutils-kt:1.1.0'
+    implementation 'com.github.mac229.FragmentUtils:fragmentutils-kt:1.2.1'
 }
 ```
 
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements ReplaceFragmentLi
 
 ```groovy
 dependencies {
-    implementation 'com.github.mac229.FragmentUtils:fragmentutils-kt:1.0.2'
+    implementation 'com.github.mac229.FragmentUtils:fragmentutils-kt:1.2.1'
 }
 ```
 
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity(), ReplaceFragmentListener {
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
-        replaceFragmentListener = getListener(ReplaceFragmentListener::class.java)
+        replaceFragmentListener = getListener()
     }
 ```
 
@@ -85,11 +85,11 @@ class MainActivity : AppCompatActivity(), ReplaceFragmentListener {
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
-        replaceFragmentListener = getListenerOrThrowException(ReplaceFragmentListener::class.java)
+        replaceFragmentListener = getListenerOrThrowException()
     }
 ```
 
 2. You also can use generic `findFragmentByTag`:
 ```kotlin
-    val fragment = supportFragmentManager.findFragmentByTag(MainFragment::class.java, TAG)
+    val fragment = supportFragmentManager.findFragmentByTag(TAG)
 ```
