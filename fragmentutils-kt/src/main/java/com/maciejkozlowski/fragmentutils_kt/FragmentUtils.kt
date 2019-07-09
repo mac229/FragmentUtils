@@ -9,6 +9,16 @@ import androidx.fragment.app.FragmentManager
  * Created by Maciej Kozłowski on 08.04.2018.
  */
 
+@Deprecated(
+        message = "Use shorter method",
+        replaceWith = ReplaceWith("getListenerOrThrowException()"),
+        level = DeprecationLevel.WARNING
+)
+inline fun <reified T> Fragment.getListenerOrThrowException(listenerClazz: Class<T>): T {
+    return getListener<T>()
+            ?: throw IllegalStateException("Not found " + listenerClazz.simpleName)
+}
+
 inline fun <reified T> Fragment.getListenerOrThrowException(): T {
     return getListener<T>()
             ?: throw IllegalStateException("Calling class must implement:  " + T::class.java.simpleName)
